@@ -216,7 +216,7 @@
         <li><a href="excursii.html">Excursii Moldova</a></li>
         <li><a href="legalizare.html">Legalizare Auto în Taxi</a></li>
         <li style="margin-left:auto;"></li>
-          <a href="boomerangtaxi://start" class="order-now-btn">Comandă Taxi Acum</a>
+          <a href id="openTaxiApp" class="order-now-btn">Comandă Taxi Acum</a>
         </li>
       </ul>
     </nav>
@@ -235,7 +235,7 @@
   <section class="hero">
     <h1>Boomerang Taxi</h1>
     <p>Rapid, sigur și confortabil – oriunde în Moldova!</p>
-    <a href="boomerangtaxi://start" class="order-now-btn">Comandă Taxi Acum</a>
+    <a href id="openTaxiApp" class="order-now-btn">Comandă Taxi Acum</a>
   </section>
 
   <!-- Servicii -->
@@ -271,6 +271,18 @@
   </footer>
 
   <script>
+    // Butonul Comandă acum → App Store / Play Store
+  document.getElementById("openTaxiApp").addEventListener("click", function () {
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
+    if (/android/i.test(ua)) {
+        window.location.href = "https://play.google.com/store/apps/details?id=com.boomerang.taxi";
+    } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+        window.location.href = "https://apps.apple.com/app/id6737691364"; // înlocuiește cu ID real App Store
+    } else {
+        alert("Accesează magazinul de aplicații pentru a instala Boomerang Taxi.");
+    }
+  });
+
     // Meniu mobil
     const mobileMenu = document.getElementById('mobile-menu');
     const navList = document.querySelector('.nav-list');

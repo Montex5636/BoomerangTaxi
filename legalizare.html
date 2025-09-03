@@ -237,24 +237,17 @@
       window.open('https://t.me/daniieell_c?text=' + encodeURIComponent(msg));
     });
 
-    // Aplicația Taxi
-    document.getElementById("openTaxiApp-form").addEventListener("click", function () {
-      var appLink = "boomerang://";
-      var iosStore = "https://apps.apple.com/app/idXXXXXXXXX";
-      var androidStore = "https://play.google.com/store/apps/details?id=com.boomerang.taxi";
-
-      var timeout = setTimeout(function () {
-        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-        if (/android/i.test(userAgent)) {
-          window.location.href = androidStore;
-        } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-          window.location.href = iosStore;
-        }
-      }, 2000);
-
-      window.location = appLink;
-      setTimeout(function () { clearTimeout(timeout); }, 1500);
-    });
+    // Butonul Comandă acum → App Store / Play Store
+  document.getElementById("openTaxiApp").addEventListener("click", function () {
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
+    if (/android/i.test(ua)) {
+        window.location.href = "https://play.google.com/store/apps/details?id=com.boomerang.taxi";
+    } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+        window.location.href = "https://apps.apple.com/app/id6737691364"; // înlocuiește cu ID real App Store
+    } else {
+        alert("Accesează magazinul de aplicații pentru a instala Boomerang Taxi.");
+    }
+  });
   </script>
 </body>
 </html>

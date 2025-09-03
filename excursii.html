@@ -177,6 +177,12 @@ footer{text-align:center;padding:15px;color:#fff;background:#111;margin-top:30px
       if(!msg) return;
       window.open('https://t.me/daniieell_c?text=' + msg);
     });
+
+    // Meniu mobil
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navList = document.querySelector('.nav-list');
+    mobileMenu.addEventListener('click', () => navList.classList.toggle('active'));
+  </script>
 </script>
 </body>
 </html>
