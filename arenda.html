@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boomerang Taxi - Arendă Auto</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #0C0F14;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #111;
+      padding: 15px;
+    }
+    header .logo {
+      color: #FFD700;
+      font-weight: bold;
+      font-size: 1.5em;
+    }
+    .nav-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 20px;
+    }
+    .nav-list li a {
+      color: #fff;
+      text-decoration: none;
+    }
+    h2, h3 {
+      color: #FFD700;
+      margin-bottom: 10px;
+    }
+    .car-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+      margin: 20px;
+    }
+    .car-card {
+      background: #1E1E1E;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+      transition: transform 0.2s;
+    }
+    .car-card:hover {
+      transform: scale(1.05);
+    }
+    .car-card img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+    .car-card h3 {
+      color: #FFD700;
+      margin: 8px 0;
+    }
+    form {
+      max-width: 450px;
+      margin: 30px auto;
+      padding: 20px;
+      background: #1E1E1E;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+    }
+    .form-group {
+      margin-bottom: 12px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 8px;
+      border: none;
+      border-radius: 6px;
+    }
+    .buttons-form {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 15px;
+    }
+    .buttons-form button {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    #rent-whatsapp { background: #25D366; }
+    #rent-telegram { background: #0088cc; }
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #111;
+      color: #ffffff;
+    }
+    .car-cards {
+  display: flex;
+  justify-content: center; /* centrează pe orizontală */
+  gap: 20px;               /* spațiu între carduri */
+  flex-wrap: wrap;         /* pe mobil le rupe pe rânduri */
+  margin: 30px 0;
+}
+
+.car-card {
+  background: #1E1E1E;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255,215,0,0.3);
+  text-align: center;
+  padding: 15px;
+  transition: transform 0.2s;
+  width: 250px;            /* fixăm dimensiunea ca să arate uniform */
+}
+
+.car-card:hover {
+  transform: scale(1.05);
+}
+
+.car-card img {
+  width: 100%;
+  max-height: 150px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.car-card h3 {
+  color: #FFD700;
+  margin: 10px 0 5px;
+}
+
+.car-card p {
+  color: #fff;
+  font-size: 0.95em;
+}
+
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">Boomerang Taxi</div>
+    <div class="menu-toggle" id="mobile-menu">&#9776;</div>
+    <ul class="nav-list">
+      <li><a href="index.html">Acasă</a></li>
+      <li><a href="comanda.html">Rezervarea Auto 24/7</a></li>
+      <li><a href="arenda.html">Arendă Auto</a></li>
+      <li><a href="excursii.html">Excursii Moldova</a></li>
+      <li><a href="legalizare.html">Legalizare Auto în Taxi</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section id="arenda">
+    <h2>Arendă Auto</h2>
+    <p>Închiriază rapid și sigur mașina dorită. Completează formularul și vom lua legătura cu tine.</p>
+
+    <!-- Carduri masini -->
+    <div class="car-cards">
+      <div class="car-card">
+        <a href="standard.html" class="card-link">
+          <img src="images/standard.png" alt="Standard">
+          <h3>Standard</h3>
+          <p>Soluția ideală pentru drum zilnic.</p>
+        </a>
+      </div>
+
+      <div class="car-card">
+        <a href="confort.html" class="card-link">
+          <img src="images/confort.png" alt="Confort">
+          <h3>Confort</h3>
+          <p>Confort și lux pentru deplasări speciale.</p>
+        </a>
+      </div>
+    </div>
+
+    <!-- Formular -->
+    <form id="rent-form">
+      <h3 style="text-align:center;color:#FFD700;margin-bottom:15px;">Trimite cererea de arendă</h3>
+      
+      <div class="form-group">
+        <label for="name">Nume complet:</label>
+        <input type="text" id="name" placeholder="Nume Prenume" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Telefon:</label>
+        <input type="text" id="phone" placeholder="Ex: 069123456" required>
+      </div>
+
+      <div class="form-group">
+        <label for="car">Selectează mașina:</label>
+        <select id="car">
+          <option value="Standard">Standard</option>
+          <option value="Confort">Confort</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="days">Număr zile:</label>
+        <input type="number" id="days" placeholder="Ex: 3" required>
+      </div>
+
+      <div class="buttons-form">
+        <button type="button" id="rent-whatsapp">Trimite pe WhatsApp</button>
+        <button type="button" id="rent-telegram">Trimite pe Telegram</button>
+      </div>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2025 Boomerang Taxi | Toate drepturile rezervate</p>
+</footer>
+
+<script>
+  function buildRentMessage() {
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const car = document.getElementById('car').value;
+    const days = document.getElementById('days').value;
+
+    if(!name || !phone || !car || !days){
+      alert("Completați toate câmpurile!");
+      return null;
+    }
+
+    return `Bună, vreau să închiriez o mașină.\nNume: ${name}\nTelefon: ${phone}\nMașina: ${car}\nNumăr zile: ${days}`;
+  }
+
+  // WhatsApp
+  document.getElementById('rent-whatsapp').addEventListener('click', () => {
+    const msg = buildRentMessage();
+    if(!msg) return;
+    window.open('https://wa.me/37360248885?text=' + encodeURIComponent(msg));
+  });
+
+  // Telegram
+  document.getElementById('rent-telegram').addEventListener('click', () => {
+    const msg = buildRentMessage();
+    if(!msg) return;
+    window.open('https://t.me/daniieell_c?text=' + encodeURIComponent(msg));
+  });
+</script>
+</body>
+</html>

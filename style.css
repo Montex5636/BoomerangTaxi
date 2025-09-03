@@ -1,0 +1,169 @@
+body{
+    margin:0;
+    font-family:'Roboto',sans-serif;
+    background:#0C0F14;
+    color:#fff;
+}
+
+header{
+    background:#111;
+    padding:15px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.menu-toggle{
+    display:none;
+    font-size:1.8em;
+    cursor:pointer;
+    color:#FFD700;
+}
+
+/* Responsive meniu mobil */
+@media(max-width:768px){
+    .menu-toggle{display:block;}
+    .nav-list{display:none;flex-direction:column;gap:10px;}
+    .nav-list.active{display:flex;}
+}
+
+/* Main section */
+main{padding:30px;text-align:center;}
+h1,h2{color:#FFD700;}
+.btn-main{
+    background:#FFD700;
+    color:#111;
+    padding:10px 20px;
+    border:none;
+    border-radius:5px;
+    text-decoration:none;
+    font-weight:bold;
+    cursor:pointer;
+}
+.btn-main:hover{background:#FFC107;}
+
+/* Formulare */
+form{
+    max-width:400px;
+    margin:20px auto;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+input, select, textarea, button{
+    padding:10px;
+    border-radius:5px;
+    border:none;
+    font-size:1em;
+}
+button{
+    background:#FFD700;
+    color:#111;
+    font-weight:bold;
+    cursor:pointer;
+}
+button:hover{background:#FFC107;}
+
+/* Carduri */
+.car-cards, .trip-cards{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-bottom:40px;
+}
+.car-card, .trip-card{
+    background:#111;
+    border-radius:10px;
+    padding:15px;
+    width:250px;
+    text-align:center;
+    box-shadow:0 0 15px rgba(255,215,0,0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.car-card:hover, .trip-card:hover{
+    transform: translateY(-5px);
+    box-shadow:0 0 25px rgba(255,215,0,0.6);
+}
+.car-card img, .trip-card img{width:100%;border-radius:10px;margin-bottom:10px;}
+.car-card h3, .trip-card h3{color:#FFD700;margin:10px 0 5px;}
+.car-card p, .trip-card p{color:#FFF;font-size:0.9em;}
+
+.card-link{
+    display:block;
+    color:inherit;
+    text-decoration:none;
+  }
+  
+  .car-card:hover{
+    transform: translateY(-5px);
+    box-shadow:0 0 25px rgba(255,215,0,0.6);
+  }
+
+.car-card:p{
+    font-size: 1em;
+    color: #FFD700;
+    font-weight: bold;
+  }
+  
+
+  .card {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  
+  .card h2 {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .card p {
+    text-align: center;
+    color: #444;
+  }
+  
+  form label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  form input, form select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+  
+  .btn-group {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  button {
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .btn-primary { background: #1e90ff; color: white; }
+  .btn-primary:hover { background: #0077cc; }
+  
+  .btn-whatsapp { background: #25d366; color: white; }
+  .btn-whatsapp:hover { background: #1da851; }
+  
+  .btn-taxi { background: #ffbb00; color: black; }
+  .btn-taxi:hover { background: #e0a800; }
+/* Footer */
+footer{background:#111;padding:15px;text-align:center;color:#ffffff;font-weight:bold;}

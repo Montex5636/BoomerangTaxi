@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boomerang Taxi - Legalizare Auto</title>
+
+  <!-- Fonturi -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #0C0F14;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #111;
+      padding: 15px;
+    }
+
+    header .logo {
+      color: #FFD700;
+      font-weight: bold;
+      font-size: 1.5em;
+    }
+
+    .nav-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-list li a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #FFD700;
+      margin-bottom: 15px;
+    }
+
+    /* Secțiune informativă */
+    .section-box {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 25px;
+      background: #1E1E1E;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+    }
+
+    .section-box h3 {
+      color: #FFD700;
+      margin-bottom: 10px;
+    }
+
+    .section-box p,
+    .section-box ul,
+    .section-box li {
+      color: #fff;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    .section-box ul {
+      padding-left: 20px;
+    }
+
+    /* Formular contact */
+    .form-box {
+      max-width: 450px;
+      margin: 30px auto;
+      padding: 25px;
+      background: #1E1E1E;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+    }
+
+    .form-box h3 {
+      text-align: center;
+      color: #FFD700;
+      margin-bottom: 15px;
+    }
+
+    .form-group {
+      margin-bottom: 12px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 8px;
+      border: none;
+      border-radius: 6px;
+    }
+
+    .buttons-form {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 15px;
+    }
+
+    .buttons-form button {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #send-whatsapp-form {
+      background: #25D366;
+      color: #fff;
+    }
+
+    #send-telegram-form {
+      background: #0088cc;
+      color: #fff;
+    }
+
+    #openTaxiApp-form {
+      background: #FFD700;
+      color: #111;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      color: #fff;
+      background: #111;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav>
+      <div class="logo">Boomerang Taxi</div>
+      <ul class="nav-list">
+        <li><a href="index.html">Acasă</a></li>
+        <li><a href="comanda.html">Rezervarea Auto 24/7</a></li>
+        <li><a href="arenda.html">Arendă Auto</a></li>
+        <li><a href="excursii.html">Excursii Moldova</a></li>
+        <li><a href="legalizare.html">Legalizare Auto în Taxi</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Conținut principal -->
+  <main>
+    <h2>Legalizare Auto în Taxi</h2>
+
+    <div class="section-box">
+      <h3>Serviciile noastre de legalizare</h3>
+      <p>
+        Oferim servicii complete pentru legalizarea autoturismelor care vor fi utilizate în activitatea de taxi. 
+        Echipa noastră te va ajuta să pregătești toate actele necesare și să te asiguri că procesul se desfășoară rapid și fără probleme.
+      </p>
+      <ul>
+        <li>Consultanță privind documentele necesare</li>
+        <li>Întocmirea dosarului de legalizare</li>
+        <li>Asistență în relația cu autoritățile</li>
+        <li>Suport pentru obținerea licenței taxi</li>
+      </ul>
+    </div>
+
+    <!-- Formular contact -->
+    <div class="form-box">
+      <h3>Trimite o cerere de legalizare</h3>
+
+      <div class="form-group">
+        <label for="name">Nume:</label>
+        <input type="text" id="name" placeholder="Nume" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Telefon:</label>
+        <input type="text" id="phone" placeholder="Ex: 069123456" required>
+      </div>
+
+      <div class="buttons-form">
+        <button id="send-whatsapp-form">Trimite pe WhatsApp</button>
+        <button id="send-telegram-form">Trimite pe Telegram</button>
+        <button id="openTaxiApp-form">Aplicația Taxi</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Boomerang Taxi | Toate drepturile rezervate</p>
+  </footer>
+
+  <script>
+    // Construire mesaj
+    function buildMessageLegalizare() {
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+
+      if (!name || !phone) {
+        alert("Completați toate câmpurile!");
+        return null;
+      }
+      return `Bună, vreau legalizarea unei mașini în taxi.\nNume: ${name}\nTelefon: ${phone}`;
+    }
+
+    // WhatsApp
+    document.getElementById('send-whatsapp-form').addEventListener('click', () => {
+      const msg = buildMessageLegalizare();
+      if (!msg) return;
+      window.open('https://wa.me/37360248885?text=' + encodeURIComponent(msg));
+    });
+
+    // Telegram
+    document.getElementById('send-telegram-form').addEventListener('click', () => {
+      const msg = buildMessageLegalizare();
+      if (!msg) return;
+      window.open('https://t.me/daniieell_c?text=' + encodeURIComponent(msg));
+    });
+
+    // Aplicația Taxi
+    document.getElementById("openTaxiApp-form").addEventListener("click", function () {
+      var appLink = "boomerang://";
+      var iosStore = "https://apps.apple.com/app/idXXXXXXXXX";
+      var androidStore = "https://play.google.com/store/apps/details?id=com.boomerang.taxi";
+
+      var timeout = setTimeout(function () {
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        if (/android/i.test(userAgent)) {
+          window.location.href = androidStore;
+        } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+          window.location.href = iosStore;
+        }
+      }, 2000);
+
+      window.location = appLink;
+      setTimeout(function () { clearTimeout(timeout); }, 1500);
+    });
+  </script>
+</body>
+</html>
