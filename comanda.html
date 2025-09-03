@@ -218,23 +218,16 @@
     window.open('https://t.me/daniieell_c?text=' + encodeURIComponent(msg));
   });
 
+  // Butonul Comandă acum → App Store / Play Store
   document.getElementById("openTaxiApp").addEventListener("click", function () {
-    const appLink = "boomerangtaxi://"; 
-    const iosStore = "https://apps.apple.com/app/id6737691364";
-    const androidStore = "https://play.google.com/store/apps/details?id=com.boomerang.taxi";
-
-    const timeout = setTimeout(() => {
-      const ua = navigator.userAgent || navigator.vendor || window.opera;
-      if (/android/i.test(ua)) {
-        window.location.href = androidStore;
-      } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
-        window.location.href = iosStore;
-      }
-    }, 2000);
-
-    window.location.href = appLink;
-
-    setTimeout(() => clearTimeout(timeout), 1500);
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
+    if (/android/i.test(ua)) {
+        window.location.href = "https://play.google.com/store/apps/details?id=com.boomerang.taxi";
+    } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+        window.location.href = "https://apps.apple.com/app/id1234567890"; // înlocuiește cu ID real App Store
+    } else {
+        alert("Accesează magazinul de aplicații pentru a instala Boomerang Taxi.");
+    }
   });
 
   // Initial price calculation
