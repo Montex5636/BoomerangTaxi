@@ -115,6 +115,15 @@ body {
 #send-rent-whatsapp{background:#25D366;}
 #send-rent-telegram{background:#0088cc;}
 footer{text-align:center;padding:15px;color:#fff;background:#111;margin-top:30px;}
+
+.order-now-btn {
+      background:#FFD700;
+      color:#111;
+      padding:8px 15px;
+      border-radius:8px;
+      font-weight:bold;
+      text-decoration:none;
+    }
 </style>
 </head>
 <body>
@@ -130,6 +139,7 @@ footer{text-align:center;padding:15px;color:#fff;background:#111;margin-top:30px
       <li><a href="arenda.html">Arendă Auto</a></li>
       <li><a href="excursii.html">Excursii Moldova</a></li>
       <li><a href="legalizare.html">Legalizare Auto în Taxi</a></li>
+        <a href="#" id="openTaxiAppTop" class="order-now-btn">Comandă Taxi Acum</a>
     </ul>
   </nav>
 </header>
@@ -248,6 +258,20 @@ document.getElementById('send-rent-telegram').addEventListener('click',()=>{
   if(!msg) return;
   window.open('https://t.me/daniieell_c?text='+msg);
 });
+
+    // Buton Comandă acum → App Store / Play Store
+    function openTaxiApp() {
+  const ua = navigator.userAgent || navigator.vendor || window.opera;
+  if (/android/i.test(ua)) {
+      window.location.href = "https://play.google.com/store/apps/details?id=com.boomerang.taxi";
+  } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+      window.location.href = "https://apps.apple.com/app/id6737691364";
+  } else {
+      alert("Accesează magazinul de aplicații pentru a instala Boomerang Taxi.");
+  }
+}
+
+document.getElementById("openTaxiAppTop").addEventListener("click", openTaxiApp);
 
 // Meniu mobil
 const mobileMenu = document.getElementById('mobile-menu');
