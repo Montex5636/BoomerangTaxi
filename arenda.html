@@ -7,36 +7,75 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
-    body {
+body {
       font-family: 'Roboto', sans-serif;
       background: #0C0F14;
       color: #fff;
       margin: 0;
       padding: 0;
     }
+
+    h1, h2, h3 {
+      color: #FFD700;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #fff;
+    }
+
+    /* Bara de meniu */
     header {
       background: #111;
       padding: 15px;
     }
+
     header .logo {
       color: #FFD700;
       font-weight: bold;
       font-size: 1.5em;
     }
+
     .nav-list {
       list-style: none;
       padding: 0;
       margin: 0;
       display: flex;
       gap: 20px;
+      align-items: center;
     }
+
     .nav-list li a {
       color: #fff;
       text-decoration: none;
+      font-weight: 500;
     }
-    h2, h3 {
-      color: #FFD700;
-      margin-bottom: 10px;
+
+    .menu-toggle {
+      display: none;
+      font-size: 26px;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    @media(max-width: 768px) {
+      .nav-list {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        background: #111;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        padding: 15px;
+      }
+      .nav-list.active {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+      }
     }
     .car-cards {
       display: grid;
@@ -258,6 +297,11 @@
     if(!msg) return;
     window.open('https://t.me/daniieell_c?text=' + encodeURIComponent(msg));
   });
+
+    // Meniu mobil
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navList = document.querySelector('.nav-list');
+    mobileMenu.addEventListener('click', () => navList.classList.toggle('active'));
 </script>
 </body>
 </html>
