@@ -18,6 +18,7 @@
     }
 
     h1, h2, h3 {
+      text-align: center;
       color: #FFD700;
       margin-bottom: 10px;
     }
@@ -92,6 +93,7 @@
 
     .section-box h3 {
       color: #FFD700;
+      text-align: left;
       margin-bottom: 10px;
     }
 
@@ -267,23 +269,23 @@
       window.open('https://t.me/daniieell_c?text=' + encodeURIComponent(msg));
     });
 
-    // Butonul Comandă acum → App Store / Play Store
-  document.getElementById("openTaxiApp").addEventListener("click", function () {
-    const ua = navigator.userAgent || navigator.vendor || window.opera;
-    if (/android/i.test(ua)) {
+    // Buton aplicația Taxi → redirecționare
+    document.getElementById("openTaxiApp-form").addEventListener("click", function () {
+      const ua = navigator.userAgent || navigator.vendor || window.opera;
+
+      if (/android/i.test(ua)) {
         window.location.href = "https://play.google.com/store/apps/details?id=com.boomerang.taxi";
-    } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+      } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
         window.location.href = "https://apps.apple.com/app/id6737691364"; // înlocuiește cu ID real App Store
-    } else {
+      } else {
         alert("Accesează magazinul de aplicații pentru a instala Boomerang Taxi.");
-    }
-  });
+      }
+    });
 
     // Meniu mobil
     const mobileMenu = document.getElementById('mobile-menu');
     const navList = document.querySelector('.nav-list');
     mobileMenu.addEventListener('click', () => navList.classList.toggle('active'));
-
   </script>
 </body>
 </html>
