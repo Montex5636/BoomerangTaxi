@@ -168,8 +168,8 @@
     }
 
     .service-card img {
-      width: 100px;
-      height: 100px;
+      width: 125px;
+      height: 125px;
       object-fit: contain;
       margin-bottom: 15px;
     }
@@ -205,23 +205,23 @@
 </head>
 <body>
 
-  <!-- Bara de meniu -->
-  <header>
-    <nav>
-      <div class="logo">Boomerang Taxi</div>
-      <div class="menu-toggle" id="mobile-menu">&#9776;</div>
-      <ul class="nav-list">
-        <li><a href="index.html">Acasă</a></li>
-        <li><a href="comanda.html">Rezervarea Auto 24/7</a></li>
-        <li><a href="arenda.html">Arendă Auto</a></li>
-        <li><a href="excursii.html">Excursii Moldova</a></li>
-        <li><a href="legalizare.html">Legalizare Auto în Taxi</a></li>
-        <li style="margin-left:auto;">
-          <a href="#" class="order-now-btn openTaxiApp">Comandă Taxi Acum</a>
-        </li>
-      </ul>
-    </nav>
-  </header>
+<!-- Bara de meniu -->
+<header>
+  <nav>
+    <div class="logo">Boomerang Taxi</div>
+    <div class="menu-toggle" id="mobile-menu">&#9776;</div>
+    <ul class="nav-list">
+      <li><a href="index.html">Acasă</a></li>
+      <li><a href="comanda.html">Rezervarea Auto 24/7</a></li>
+      <li><a href="arenda.html">Arendă Auto</a></li>
+      <li><a href="excursii.html">Excursii Moldova</a></li>
+      <li><a href="legalizare.html">Legalizare Auto în Taxi</a></li>
+      <li style="margin-left:auto;">
+        <a href="#" id="openTaxiAppTop" class="order-now-btn">Comandă Taxi Acum</a>
+      </li>
+    </ul>
+  </nav>
+</header>
 
   <!-- Slider reclame -->
   <section class="slider">
@@ -232,12 +232,12 @@
     </div>
   </section>
 
-  <!-- Hero / Banner -->
-  <section class="hero">
-    <h1>Boomerang Taxi</h1>
-    <p>Rapid, sigur și confortabil – oriunde în Moldova!</p>
-    <a href="#" class="order-now-btn openTaxiApp">Comandă Taxi Acum</a>
-  </section>
+<!-- Hero -->
+<section class="hero">
+  <h1>Boomerang Taxi</h1>
+  <p>Rapid, sigur și confortabil – oriunde în Moldova!</p>
+  <a href="#" id="openTaxiAppHero" class="order-now-btn">Comandă Taxi Acum</a>
+</section>
 
   <!-- Servicii -->
   <section class="services">
@@ -273,19 +273,20 @@
 
   <script>
     // Buton Comandă acum → App Store / Play Store
-    document.querySelectorAll(".openTaxiApp").forEach(btn => {
-      btn.addEventListener("click", function (e) {
-        e.preventDefault();
-        const ua = navigator.userAgent || navigator.vendor || window.opera;
-        if (/android/i.test(ua)) {
-            window.location.href = "https://play.google.com/store/apps/details?id=com.boomerang.taxi";
-        } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
-            window.location.href = "https://apps.apple.com/app/id6737691364";
-        } else {
-            alert("Accesează magazinul de aplicații pentru a instala Boomerang Taxi.");
-        }
-      });
-    });
+    function openTaxiApp() {
+  const ua = navigator.userAgent || navigator.vendor || window.opera;
+  if (/android/i.test(ua)) {
+      window.location.href = "https://play.google.com/store/apps/details?id=com.boomerang.taxi";
+  } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+      window.location.href = "https://apps.apple.com/app/id6737691364";
+  } else {
+      alert("Accesează magazinul de aplicații pentru a instala Boomerang Taxi.");
+  }
+}
+
+document.getElementById("openTaxiAppTop").addEventListener("click", openTaxiApp);
+document.getElementById("openTaxiAppHero").addEventListener("click", openTaxiApp);
+
 
     // Meniu mobil
     const mobileMenu = document.getElementById('mobile-menu');
