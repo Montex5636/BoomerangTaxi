@@ -6,151 +6,93 @@
 <title>Boomerang Taxi - Excursii Moldova</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto&display=swap" rel="stylesheet">
 <style>
-body {
-      font-family: 'Roboto', sans-serif;
-      background: #0C0F14;
-      color: #fff;
-      margin: 0;
-      padding: 0;
-    }
+body { font-family:'Roboto',sans-serif; background:#0C0F14; color:#fff; margin:0; padding:0;}
+h1,h2,h3,p { color:#FFD700; margin-bottom:10px; text-align:center;}
+p { color:#fff; }
 
-    h1, h2, h3 {
-      color: #FFD700;
-      margin-bottom: 10px;
-    }
+/* Header */
+header { background:#111; padding:10px 20px; display:flex; justify-content:space-between; align-items:center; position:relative; }
+.logo { color:#FFD700; font-weight:bold; font-size:1.5em; }
+.nav-list { list-style:none; padding:0; margin:0; display:flex; gap:15px; align-items:center; }
+.nav-list li a { color:#fff; text-decoration:none; font-weight:500; }
+.menu-toggle { display:none; font-size:28px; color:#fff; cursor:pointer; }
 
-    p {
-      color: #fff;
-    }
+/* Buton Comandă Taxi Acum */
+.order-now-btn { background:#FFD700; color:#111; padding:8px 15px; border-radius:8px; font-weight:bold; text-decoration:none; }
 
-    /* Bara de meniu */
-    header {
-      background: #111;
-      padding: 15px;
-    }
-
-    header .logo {
-      color: #FFD700;
-      font-weight: bold;
-      font-size: 1.5em;
-    }
-
-    .nav-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      gap: 20px;
-      align-items: center;
-    }
-
-    .nav-list li a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .menu-toggle {
-      display: none;
-      font-size: 26px;
-      color: #fff;
-      cursor: pointer;
-    }
-
-    @media(max-width: 768px) {
-      .nav-list {
-        display: none;
-        flex-direction: column;
-        gap: 10px;
-        background: #111;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        padding: 15px;
-      }
-      .nav-list.active {
-        display: flex;
-      }
-      .menu-toggle {
-        display: block;
-      }
-    }
+/* Limba */
+.lang-select { background:#FFD700; color:#111; border:none; border-radius:5px; padding:5px 8px; font-weight:bold; cursor:pointer; }
 
 /* Carduri excursii */
-.excursii-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
-  margin:30px 20px;
-}
-.excursie-card{background:#1E1E1E;border-radius:12px;box-shadow:0 0 15px rgba(255,215,0,0.3);overflow:hidden;display:flex;flex-direction:column;transition:transform .2s;}
-.excursie-card:hover{transform:scale(1.03);}
-.excursie-card img{width:100%;height:160px;object-fit:cover;}
-.excursie-card .content{padding:15px;flex:1;display:flex;flex-direction:column;}
-.excursie-card h3{color:#FFD700;margin:0 0 8px 0;font-size:1.1em;}
-.excursie-card p{flex:1;margin:0 0 10px 0;font-size:0.9em;}
-.excursie-card .duration-price{display:flex;justify-content:space-between;margin-bottom:10px;color:#FFD700;font-weight:bold;font-size:0.9em;}
-.excursie-card .buttons{display:flex;gap:10px;}
-.excursie-card .buttons button{
-  flex:1;padding:8px;border:none;border-radius:8px;font-weight:bold;cursor:pointer;font-size:0.9em;color:#fff;
-}
-.send-whatsapp{background:#25D366;}
-.send-telegram{background:#0088cc;}
+.excursii-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; margin:30px 20px;}
+.excursie-card {background:#1E1E1E; border-radius:12px; box-shadow:0 0 15px rgba(255,215,0,0.3); overflow:hidden; display:flex; flex-direction:column; transition:transform .2s;}
+.excursie-card:hover {transform:scale(1.03);}
+.excursie-card img {width:100%; height:160px; object-fit:cover;}
+.excursie-card .content {padding:15px; flex:1; display:flex; flex-direction:column;}
+.excursie-card h3 {color:#FFD700; margin:0 0 8px 0; font-size:1.1em;}
+.excursie-card p {flex:1; margin:0 0 10px 0; font-size:0.9em;}
+.excursie-card .duration-price {display:flex; justify-content:space-between; margin-bottom:10px; color:#FFD700; font-weight:bold; font-size:0.9em;}
+.excursie-card .buttons {display:flex; gap:10px;}
+.excursie-card .buttons button {flex:1; padding:8px; border:none; border-radius:8px; font-weight:bold; cursor:pointer; font-size:0.9em; color:#fff;}
+.send-whatsapp {background:#25D366;}
+.send-telegram {background:#0088cc;}
 
 /* Formular rezervare */
-.form-box{max-width:500px;margin:40px auto;padding:25px;background:#1E1E1E;border-radius:12px;box-shadow:0 0 20px rgba(255,215,0,0.4);}
-.form-box h3{text-align:center;color:#FFD700;margin-bottom:20px;}
-.form-group{margin-bottom:15px;}
-.form-group label{display:block;margin-bottom:5px;}
-.form-group input{width:100%;padding:10px;border:none;border-radius:6px;}
-.buttons-form{display:flex;gap:10px;margin-top:15px;}
-.buttons-form button{flex:1;padding:12px;border:none;border-radius:8px;color:#fff;font-weight:bold;cursor:pointer;font-size:0.95em;}
-#send-whatsapp-form{background:#25D366;}
-#send-telegram-form{background:#0088cc;}
-footer{text-align:center;padding:15px;color:#fff;background:#111;margin-top:30px;}
+.form-box {max-width:500px; margin:40px auto; padding:25px; background:#1E1E1E; border-radius:12px; box-shadow:0 0 20px rgba(255,215,0,0.4);}
+.form-box h3 {text-align:center; color:#FFD700; margin-bottom:20px;}
+.form-group {margin-bottom:15px;}
+.form-group label {display:block; margin-bottom:5px;}
+.form-group input {width:100%; padding:10px; border:none; border-radius:6px; background:#2C2C2C; color:#fff;}
+.buttons-form {display:flex; gap:10px; margin-top:15px; flex-wrap:wrap;}
+.buttons-form button {flex:1; padding:12px; border:none; border-radius:8px; color:#fff; font-weight:bold; cursor:pointer; font-size:0.95em;}
+#send-whatsapp-form {background:#25D366;}
+#send-telegram-form {background:#0088cc;}
+#openTaxiApp-form {background:#FFD700; color:#111;}
 
-.order-now-btn {
-      background:#FFD700;
-      color:#111;
-      padding:8px 15px;
-      border-radius:8px;
-      font-weight:bold;
-      text-decoration:none;
-    }
+footer {text-align:center; padding:15px; color:#FFD700; background:#111; margin-top:30px;}
+
+@media(max-width:768px){
+  .menu-toggle { display:block; }
+  .nav-list { display:none; flex-direction:column; gap:10px; background:#111; position:absolute; top:60px; left:0; width:100%; padding:15px; }
+  .nav-list.active { display:flex; }
+  .order-now-btn { position:static; margin-top:10px; display:block; text-align:center; }
+}
 </style>
 </head>
 <body>
+
 <header>
-<nav>
-<div class="logo">Boomerang Taxi</div>
-<div class="menu-toggle" id="mobile-menu">&#9776;</div>
-<ul class="nav-list">
+  <div class="logo">Boomerang Taxi</div>
+  <div class="menu-toggle" id="mobile-menu">&#9776;</div>
+  <ul class="nav-list">
     <li><a href="index.html">Acasă</a></li>
     <li><a href="comanda.html">Rezervarea Auto 24/7</a></li>
     <li><a href="arenda.html">Arendă Auto</a></li>
     <li><a href="excursii.html">Excursii Moldova</a></li>
-    <li><a href="legalizare.html">Legalizare Auto în Taxi</a></li>
-      <a href="#" id="openTaxiAppTop" class="order-now-btn">Comandă Taxi Acum</a>
-</ul>
-</nav>
+    <li><a href="legalizare.html">Legalizare Auto in Taxi</a></li>
+    <li>
+      <select class="lang-select" id="langSelect" aria-label="Language">
+        <option value="ro">RO</option>
+        <option value="ru">RU</option>
+        <option value="en">EN</option>
+        <option value="ua">UA</option>
+      </select>
+    </li>
+  </ul>
+  <a href="#" id="openTaxiAppTop" class="order-now-btn">Comandă Taxi Acum</a>
 </header>
 
 <main>
-<h2 style="text-align:center;">Excursii Moldova</h2>
-<p style="text-align:center;">Alege traseul și bucură-te de excursii confortabile cu Boomerang Taxi.</p>
+<h2>Excursii Moldova</h2>
+<p>Alege traseul și bucură-te de excursii confortabile cu Boomerang Taxi.</p>
 
-<!-- Carduri excursii -->
 <div class="excursii-grid">
   <div class="excursie-card">
     <img src="images/orheiul-vechi.jpg" alt="Orheiul Vechi">
     <div class="content">
       <h3>Chișinău – Orheiul Vechi</h3>
       <p>Excursie de o zi prin cele mai frumoase locuri din Moldova.</p>
-      <div class="duration-price">
-        <span>6 ore</span>
-        <span>500 lei</span>
-      </div>
+      <div class="duration-price"><span>6 ore</span><span>500 lei</span></div>
       <div class="buttons">
         <button class="send-whatsapp">WhatsApp</button>
         <button class="send-telegram">Telegram</button>
@@ -163,10 +105,7 @@ footer{text-align:center;padding:15px;color:#fff;background:#111;margin-top:30px
     <div class="content">
       <h3>Chișinău – Tiraspol</h3>
       <p>Vizitează orașul Tiraspol și atracțiile sale istorice și moderne.</p>
-      <div class="duration-price">
-        <span>5 ore</span>
-        <span>600 lei</span>
-      </div>
+      <div class="duration-price"><span>5 ore</span><span>600 lei</span></div>
       <div class="buttons">
         <button class="send-whatsapp">WhatsApp</button>
         <button class="send-telegram">Telegram</button>
@@ -179,10 +118,7 @@ footer{text-align:center;padding:15px;color:#fff;background:#111;margin-top:30px
     <div class="content">
       <h3>Chișinău – Soroca</h3>
       <p>Excursie de o zi la cetatea Soroca și împrejurimile sale pitorești.</p>
-      <div class="duration-price">
-        <span>7 ore</span>
-        <span>700 lei</span>
-      </div>
+      <div class="duration-price"><span>7 ore</span><span>700 lei</span></div>
       <div class="buttons">
         <button class="send-whatsapp">WhatsApp</button>
         <button class="send-telegram">Telegram</button>
@@ -191,87 +127,227 @@ footer{text-align:center;padding:15px;color:#fff;background:#111;margin-top:30px
   </div>
 </div>
 
-<!-- Formular rezervare -->
 <div class="form-box">
-    <h3>Rezervare Personalizată</h3>
-    <div class="form-group">
-      <label for="name">Nume:</label>
-      <input type="text" id="name" placeholder="Nume" required>
-    </div>
-    <div class="form-group">
-      <label for="phone">Telefon:</label>
-      <input type="text" id="phone" placeholder="Ex: 069123456" required>
-    </div>
-    <div class="form-group">
-      <label for="pickup">Locație plecare:</label>
-      <input type="text" id="pickup" placeholder="Ex: Chișinău" required>
-    </div>
-    <div class="form-group">
-      <label for="destination">Destinație:</label>
-      <input type="text" id="destination" placeholder="Ex: Orheiul Vechi" required>
-    </div>
-    <div class="form-group">
-      <label for="persons">Număr persoane:</label>
-      <input type="number" id="persons" min="1" value="1" required>
-    </div>
-    <div class="buttons-form">
-      <button id="send-whatsapp-form">Trimite pe WhatsApp</button>
-      <button id="send-telegram-form">Trimite pe Telegram</button>
-    </div>
-  </div>
+<h3>Rezervare Personalizată</h3>
+<div class="form-group"><label for="name">Nume:</label><input type="text" id="name" placeholder="Nume"></div>
+<div class="form-group"><label for="phone">Telefon:</label><input type="text" id="phone" placeholder="Ex: 069123456"></div>
+<div class="form-group"><label for="pickup">Locație plecare:</label><input type="text" id="pickup" placeholder="Ex: Chișinău"></div>
+<div class="form-group"><label for="destination">Destinație:</label><input type="text" id="destination" placeholder="Ex: Orheiul Vechi"></div>
+<div class="form-group"><label for="persons">Număr persoane:</label><input type="number" id="persons" min="1" value="1"></div>
 
+<div class="buttons-form">
+<button id="send-whatsapp-form">Trimite pe WhatsApp</button>
+<button id="send-telegram-form">Trimite pe Telegram</button>
+<button id="openTaxiApp-form">Aplicația Taxi</button>
+</div>
+</div>
 </main>
+
 <footer>
 <p>&copy; 2025 Boomerang Taxi | Toate drepturile rezervate</p>
 </footer>
 
 <script>
-    function buildMessageExcursie(){
-      const name = document.getElementById('name').value;
-      const phone = document.getElementById('phone').value;
-      const pickup = document.getElementById('pickup').value;
-      const destination = document.getElementById('destination').value;
-      const persons = document.getElementById('persons').value;
-      if(!name || !phone || !pickup || !destination || !persons){
-        alert("Completați toate câmpurile!");
-        return null;
-      }
-      return `Bună, vreau să rezerv o excursie.%0A📝 Nume: ${name}%0A📞 Telefon: ${phone}%0A🚖 De la: ${pickup}%0A🏰 Până la: ${destination}%0A👥 Persoane: ${persons}`;
-    }
-    
-    // WhatsApp
-    document.getElementById('send-whatsapp-form').addEventListener('click', () => {
-      const msg = buildMessageExcursie();
-      if(!msg) return;
-      window.open('https://wa.me/37360248885?text=' + msg);
-    });
-    
-    // Telegram
-    document.getElementById('send-telegram-form').addEventListener('click', () => {
-      const msg = buildMessageExcursie();
-      if(!msg) return;
-      window.open('https://t.me/daniieell_c?text=' + msg);
-    });
-
-        // Buton Comandă acum → App Store / Play Store
-        function openTaxiApp() {
-  const ua = navigator.userAgent || navigator.vendor || window.opera;
-  if (/android/i.test(ua)) {
-      window.location.href = "https://play.google.com/store/apps/details?id=com.boomerang.taxi";
-  } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
-      window.location.href = "https://apps.apple.com/app/id6737691364";
-  } else {
-      alert("Accesează magazinul de aplicații pentru a instala Boomerang Taxi.");
+// Traduceri pentru pagină, carduri și meniu
+const pageTranslations = {
+  ro: {
+    heading: "Excursii Moldova",
+    subtitle: "Alege traseul și bucură-te de excursii confortabile cu Boomerang Taxi.",
+    formTitle: "Rezervare Personalizată",
+    nameLabel: "Nume:",
+    phoneLabel: "Telefon:",
+    pickupLabel: "Locație plecare:",
+    destinationLabel: "Destinație:",
+    personsLabel: "Număr persoane:",
+    whatsappBtn: "Trimite pe WhatsApp",
+    telegramBtn: "Trimite pe Telegram",
+    taxiAppBtn: "Aplicația Taxi",
+    menu: ["Acasă", "Rezervarea Auto 24/7", "Arendă Auto", "Excursii Moldova", "Legalizare Auto in Taxi"],
+    excursions: [
+      {title:"Chișinău – Orheiul Vechi", desc:"Excursie de o zi prin cele mai frumoase locuri din Moldova.", duration:"6 ore", price:"500 lei"},
+      {title:"Chișinău – Tiraspol", desc:"Vizitează orașul Tiraspol și atracțiile sale istorice și moderne.", duration:"5 ore", price:"600 lei"},
+      {title:"Chișinău – Soroca", desc:"Excursie de o zi la cetatea Soroca și împrejurimile sale pitorești.", duration:"7 ore", price:"700 lei"}
+    ]
+  },
+  ru: {
+    heading: "Экскурсии по Молдове",
+    subtitle: "Выберите маршрут и наслаждайтесь комфортными экскурсиями с Boomerang Taxi.",
+    formTitle: "Индивидуальное бронирование",
+    nameLabel: "Имя:",
+    phoneLabel: "Телефон:",
+    pickupLabel: "Место отправления:",
+    destinationLabel: "Пункт назначения:",
+    personsLabel: "Количество человек:",
+    whatsappBtn: "Отправить в WhatsApp",
+    telegramBtn: "Отправить в Telegram",
+    taxiAppBtn: "Приложение Такси",
+    menu: ["Главная", "Бронирование авто 24/7", "Аренда авто", "Экскурсии по Молдове", "Легализация авто в такси"],
+    excursions: [
+      {title:"Кишинёв – Орхей-Век", desc:"Однодневная экскурсия по красивейшим местам Молдовы.", duration:"6 часов", price:"500 лей"},
+      {title:"Кишинёв – Тирасполь", desc:"Посетите город Тирасполь и его исторические и современные достопримечательности.", duration:"5 часов", price:"600 лей"},
+      {title:"Кишинёв – Сорока", desc:"Однодневная экскурсия в Сороку и её живописные окрестности.", duration:"7 часов", price:"700 лей"}
+    ]
+  },
+  en: {
+    heading: "Trips in Moldova",
+    subtitle: "Choose your route and enjoy comfortable trips with Boomerang Taxi.",
+    formTitle: "Custom Booking",
+    nameLabel: "Name:",
+    phoneLabel: "Phone:",
+    pickupLabel: "Pickup location:",
+    destinationLabel: "Destination:",
+    personsLabel: "Number of persons:",
+    whatsappBtn: "Send via WhatsApp",
+    telegramBtn: "Send via Telegram",
+    taxiAppBtn: "Taxi App",
+    menu: ["Home", "Car Booking 24/7", "Car Rental", "Trips in Moldova", "Car Legalization in Taxi"],
+    excursions: [
+      {title:"Chisinau – Orheiul Vechi", desc:"One-day trip to the most beautiful places in Moldova.", duration:"6 hrs", price:"500 MDL"},
+      {title:"Chisinau – Tiraspol", desc:"Visit Tiraspol and its historical and modern attractions.", duration:"5 hrs", price:"600 MDL"},
+      {title:"Chisinau – Soroca", desc:"One-day trip to Soroca fortress and its picturesque surroundings.", duration:"7 hrs", price:"700 MDL"}
+    ]
+  },
+  ua: {
+    heading: "Екскурсії по Молдові",
+    subtitle: "Оберіть маршрут та насолоджуйтесь комфортними поїздками з Boomerang Taxi.",
+    formTitle: "Індивідуальне бронювання",
+    nameLabel: "Ім'я:",
+    phoneLabel: "Телефон:",
+    pickupLabel: "Місце відправлення:",
+    destinationLabel: "Місце призначення:",
+    personsLabel: "Кількість осіб:",
+    whatsappBtn: "Відправити в WhatsApp",
+    telegramBtn: "Відправити в Telegram",
+    taxiAppBtn: "Додаток Таксі",
+    menu: ["Головна", "Бронювання авто 24/7", "Оренда авто", "Екскурсії по Молдові", "Легалізація авто в таксі"],
+    excursions: [
+      {title:"Кишинів – Орхей-Век", desc:"Одноденна екскурсія найкрасивішими місцями Молдови.", duration:"6 год", price:"500 лей"},
+      {title:"Кишинів – Тирасполь", desc:"Відвідайте місто Тирасполь та його історичні та сучасні пам'ятки.", duration:"5 год", price:"600 лей"},
+      {title:"Кишинів – Сорока", desc:"Одноденна екскурсія до фортеці Сорока та її мальовничих околиць.", duration:"7 год", price:"700 лей"}
+    ]
   }
+};
+
+// Alerta completare câmpuri
+const alertTranslations = {
+  ro: "Completați toate câmpurile!",
+  ru: "Заполните все поля!",
+  en: "Please fill in all fields!",
+  ua: "Заповніть усі поля!"
+};
+
+// Mesaje carduri
+function getCardMessage(lang, excursionTitle) {
+  return {
+    ro: `Bună, vreau să rezerv excursia: ${excursionTitle}`,
+    ru: `Здравствуйте, хочу забронировать экскурсию: ${excursionTitle}`,
+    en: `Hello, I want to book the trip: ${excursionTitle}`,
+    ua: `Вітаю, хочу забронювати екскурсію: ${excursionTitle}`
+  }[lang];
 }
 
-document.getElementById("openTaxiAppTop").addEventListener("click", openTaxiApp);
+// Mesaje formular
+function buildFormMessage() {
+  const lang = document.getElementById('langSelect').value;
+  const name = document.getElementById('name').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const pickup = document.getElementById('pickup').value.trim();
+  const destination = document.getElementById('destination').value.trim();
+  const persons = document.getElementById('persons').value.trim();
+  if(!name || !phone || !pickup || !destination || !persons){
+    alert(alertTranslations[lang]);
+    return null;
+  }
+  const templates = {
+    ro: `Bună, vreau să rezerv o excursie.%0A📝 Nume: {name}%0A📞 Telefon: {phone}%0A🚖 De la: {pickup}%0A🏰 Până la: {destination}%0A👥 Persoane: {persons}`,
+    ru: `Здравствуйте, хочу забронировать экскурсию.%0A📝 Имя: {name}%0A📞 Телефон: {phone}%0A🚖 Откуда: {pickup}%0A🏰 Куда: {destination}%0A👥 Кол-во человек: {persons}`,
+    en: `Hello, I want to book a trip.%0A📝 Name: {name}%0A📞 Phone: {phone}%0A🚖 From: {pickup}%0A🏰 To: {destination}%0A👥 Persons: {persons}`,
+    ua: `Вітаю, хочу забронювати екскурсію.%0A📝 Ім'я: {name}%0A📞 Телефон: {phone}%0A🚖 Звідки: {pickup}%0A🏰 Куди: {destination}%0A👥 Осіб: {persons}`
+  };
+  return templates[lang].replace("{name}", name)
+                         .replace("{phone}", phone)
+                         .replace("{pickup}", pickup)
+                         .replace("{destination}", destination)
+                         .replace("{persons}", persons);
+}
 
-  // Meniu mobil
-  const mobileMenu = document.getElementById('mobile-menu');
-    const navList = document.querySelector('.nav-list');
-    mobileMenu.addEventListener('click', () => navList.classList.toggle('active'));
-  </script>
+// Butoane formular
+document.getElementById('send-whatsapp-form').addEventListener('click', ()=>{
+  const msg = buildFormMessage();
+  if(!msg) return;
+  window.open('https://wa.me/37360248885?text='+msg);
+});
+document.getElementById('send-telegram-form').addEventListener('click', ()=>{
+  const msg = buildFormMessage();
+  if(!msg) return;
+  window.open('https://t.me/daniieell_c?text='+msg);
+});
+
+// Butoane carduri
+document.querySelectorAll('.excursie-card').forEach(card => {
+  const title = card.querySelector('h3').textContent;
+  card.querySelector('.send-whatsapp').addEventListener('click', ()=>{
+    const lang = document.getElementById('langSelect').value;
+    window.open('https://wa.me/37360248885?text='+encodeURIComponent(getCardMessage(lang,title)));
+  });
+  card.querySelector('.send-telegram').addEventListener('click', ()=>{
+    const lang = document.getElementById('langSelect').value;
+    window.open('https://t.me/daniieell_c?text='+encodeURIComponent(getCardMessage(lang,title)));
+  });
+});
+
+// Aplicație Taxi
+function openTaxiApp(){
+  const ua=navigator.userAgent||navigator.vendor||window.opera;
+  if(/android/i.test(ua)) window.location.href="https://play.google.com/store/apps/details?id=com.boomerang.taxi";
+  else if(/iPad|iPhone|iPod/.test(ua)&&!window.MSStream) window.location.href="https://apps.apple.com/app/id6737691364";
+  else alert("Accesează magazinul de aplicații pentru a instala Boomerang Taxi.");
+}
+document.getElementById("openTaxiAppTop").addEventListener("click", openTaxiApp);
+document.getElementById("openTaxiApp-form").addEventListener("click", openTaxiApp);
+
+// Meniu mobil
+const mobileMenu=document.getElementById('mobile-menu');
+const navList=document.querySelector('.nav-list');
+mobileMenu.addEventListener('click',()=>navList.classList.toggle('active'));
+
+// Actualizare limba pagina și meniu
+function updatePageLanguage(lang) {
+  const t = pageTranslations[lang];
+  document.querySelector('h2').textContent = t.heading;
+  document.querySelector('main p').textContent = t.subtitle;
+
+  const f = document.querySelector('.form-box');
+  f.querySelector('h3').textContent = t.formTitle;
+  f.querySelector('label[for="name"]').textContent = t.nameLabel;
+  f.querySelector('label[for="phone"]').textContent = t.phoneLabel;
+  f.querySelector('label[for="pickup"]').textContent = t.pickupLabel;
+  f.querySelector('label[for="destination"]').textContent = t.destinationLabel;
+  f.querySelector('label[for="persons"]').textContent = t.personsLabel;
+  f.querySelector('#send-whatsapp-form').textContent = t.whatsappBtn;
+  f.querySelector('#send-telegram-form').textContent = t.telegramBtn;
+  f.querySelector('#openTaxiApp-form').textContent = t.taxiAppBtn;
+
+  // Actualizare meniu
+  const navLinks = document.querySelectorAll('.nav-list li a');
+  t.menu.forEach((text, index) => {
+    if(navLinks[index]) navLinks[index].textContent = text;
+  });
+
+  // Actualizare excursii
+  const cards = document.querySelectorAll('.excursie-card');
+  cards.forEach((card,index)=>{
+    const ex = t.excursions[index];
+    card.querySelector('h3').textContent = ex.title;
+    card.querySelector('p').textContent = ex.desc;
+    const dp = card.querySelector('.duration-price');
+    dp.children[0].textContent = ex.duration;
+    dp.children[1].textContent = ex.price;
+  });
+}
+document.getElementById('langSelect').addEventListener('change',(e)=>updatePageLanguage(e.target.value));
+updatePageLanguage(document.getElementById('langSelect').value);
 </script>
+
 </body>
 </html>

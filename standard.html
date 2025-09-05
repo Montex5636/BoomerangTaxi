@@ -1,220 +1,455 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Boomerang Taxi - Standard</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto&display=swap" rel="stylesheet">
 <style>
-body{font-family:'Roboto',sans-serif;background:#0C0F14;color:#fff;margin:0;padding:0;}
-header{background:#111;padding:15px;}
-header .logo{color:#FFD700;font-weight:bold;font-size:1.5em;}
-.nav-list{list-style:none;padding:0;margin:0;display:flex;gap:20px;}
-.nav-list li a{color:#fff;text-decoration:none;}
-h2,h3{color:#FFD700;margin-bottom:10px;}
-p{color:#fff;}
+  :root{--gold:#FFD700;--bg:#0C0F14;--card:#1E1E1E}
+  body{font-family:Roboto,system-ui,-apple-system,Segoe UI,Arial;margin:0;background:var(--bg);color:#fff}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{color:var(--gold);margin:0 0 10px}
+  p{margin:0;color:#fff}
 
-/* Carduri mașini */
-.car-cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
-  margin:30px 20px;
-}
-.car-card{background:#1E1E1E;border-radius:12px;box-shadow:0 0 15px rgba(255,215,0,0.3);overflow:hidden;display:flex;flex-direction:column;transition: transform 0.2s;}
-.car-card:hover{transform:scale(1.03);}
-.car-card img{width:100%;height:160px;object-fit:cover;}
-.car-card h3{color:#FFD700;margin:10px;font-size:1.1em;}
-.car-card p{margin:0 10px 10px;font-size:0.95em;}
-.car-card button{
-  margin:10px;
-  padding:10px;
-  border:none;
-  border-radius:8px;
-  background:#FFD700;
-  color:#111;
-  font-weight:bold;
-  cursor:pointer;
-  transition:background .2s;
-}
-.car-card button:hover{background:#e6c200;}
+  /* Header */
+  header{background:#111;box-shadow:0 1px 0 rgba(0,0,0,0.5)}
+  .nav-container{max-width:1200px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .logo{font-weight:700;color:var(--gold);font-size:1.4rem}
+  .menu-toggle{display:none;font-size:26px;color:#fff;cursor:pointer}
+  .nav-links{display:flex;gap:18px;align-items:center;list-style:none;padding:0;margin:0;flex:1;justify-content:center}
+  .nav-links li{white-space:nowrap}
+  .nav-links a{color:#fff;font-weight:500;padding:6px 8px;border-radius:6px;display:inline-block}
+  .nav-links a:hover{background:rgba(255,215,0,0.06)}
+  .nav-right{display:flex;gap:10px;align-items:center;margin-left:auto}
+  .lang-select{background:var(--gold);color:#111;border:none;border-radius:6px;padding:6px 8px;font-weight:700;cursor:pointer}
+  .order-now-btn{background:var(--gold);color:#111;padding:8px 14px;border-radius:8px;font-weight:700}
 
-/* Formular închiriere */
-#rent-form-container{display:none;max-width:500px;margin:40px auto;padding:25px;background:#1E1E1E;border-radius:12px;box-shadow:0 0 20px rgba(255,215,0,0.4);}
-#rent-form-container h3{text-align:center;color:#FFD700;margin-bottom:20px;}
-.form-group{margin-bottom:15px;}
-.form-group label{display:block;margin-bottom:5px;}
-.form-group input{width:100%;padding:10px;border:none;border-radius:6px;}
-#selected-car{color:#FFD700;font-weight:bold;margin:10px 0;}
-#total-price{color:#FFD700;font-weight:bold;margin:15px 0;}
-.buttons-form{display:flex;gap:10px;}
-.buttons-form button{flex:1;padding:12px;border:none;border-radius:8px;color:#fff;font-weight:bold;cursor:pointer;}
-#send-rent-whatsapp{background:#25D366;}
-#send-rent-telegram{background:#0088cc;}
-footer{text-align:center;padding:15px;color:#fff;background:#111;margin-top:30px;}
+  /* Cards */
+  .container{max-width:1200px;margin:28px auto;padding:0 16px}
+  .hero{text-align:center;margin-bottom:14px}
+  .car-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+  .car-card{background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,0.6);display:flex;flex-direction:column;transition:transform .18s}
+  .car-card:hover{transform:translateY(-6px)}
+  .car-card img{width:100%;height:160px;object-fit:cover;display:block}
+  .card-body{padding:12px;flex:1;display:flex;flex-direction:column}
+  .card-body h3{margin-bottom:8px;font-size:1.05rem;color:var(--gold)}
+  .card-body p{flex:1;margin-bottom:10px;font-size:.95rem}
+  .card-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;color:var(--gold);font-weight:700}
+  .card-actions{display:flex;gap:8px;flex-wrap:wrap}
+  .btn{border:none;padding:9px;border-radius:8px;cursor:pointer;font-weight:700}
+  .btn--gold{background:var(--gold);color:#111}
+  .btn--green{background:#25D366;color:#fff}
+  .btn--blue{background:#0088cc;color:#fff}
+  .btn--light{background:#2C2C2C;color:#fff}
 
-.order-now-btn {
-      background:#FFD700;
-      color:#111;
-      padding:8px 15px;
-      border-radius:8px;
-      font-weight:bold;
-      text-decoration:none;
-    }
+  /* Rent form */
+  #rent-form-container{display:none;margin:28px auto 60px;max-width:560px;background:var(--card);padding:20px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.6)}
+  #rent-form-container h3{text-align:center;color:var(--gold);margin-bottom:12px}
+  .form-group{margin-bottom:12px}
+  label{display:block;margin-bottom:6px}
+  input[type="text"],input[type="number"]{width:100%;padding:10px;border-radius:8px;border:0;background:#2C2C2C;color:#fff}
+  .buttons-form{display:flex;gap:10px}
+  .buttons-form .btn{flex:1}
+
+  /* Modal details */
+  .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);z-index:60}
+  .modal.show{display:flex}
+  .modal-inner{background:#111;border-radius:12px;max-width:900px;width:94%;padding:16px;display:flex;gap:12px;flex-wrap:wrap}
+  .modal-gallery{flex:1;min-width:260px}
+  .modal-gallery img{width:100%;height:300px;object-fit:cover;border-radius:8px}
+  .modal-info{flex:1;min-width:260px}
+  .thumbs{display:flex;gap:8px;margin-top:8px}
+  .thumbs img{width:64px;height:48px;object-fit:cover;border-radius:6px;cursor:pointer;opacity:.95}
+  .close-modal{background:#333;color:#fff;border-radius:8px;border:0;padding:8px 12px;cursor:pointer;margin-top:12px}
+
+  footer{background:#111;padding:14px;text-align:center;color:#fff;margin-top:30px}
+
+  @media(max-width:768px){
+    .menu-toggle{display:block}
+    .nav-links{display:none;flex-direction:column;gap:8px;width:100%;margin-top:8px;background:#111;padding:12px;border-radius:8px}
+    .nav-links.active{display:flex}
+    .nav-right{flex-basis:100%;justify-content:flex-end;margin-top:10px}
+    .modal-inner{flex-direction:column}
+    .modal-gallery img{height:220px}
+  }
 </style>
 </head>
 <body>
-<header>
-  <nav>
-    <div class="logo">Boomerang Taxi</div>
 
-    <!-- Buton hamburger -->
-    <div class="menu-toggle" id="mobile-menu">&#9776;</div>
-    <ul class="nav-list" id="nav-list">
-      <li><a href="index.html">Acasă</a></li>
-      <li><a href="comanda.html">Rezervarea Auto 24/7</a></li>
-      <li><a href="arenda.html">Arendă Auto</a></li>
-      <li><a href="excursii.html">Excursii Moldova</a></li>
-      <li><a href="legalizare.html">Legalizare Auto în Taxi</a></li>
-        <a href="#" id="openTaxiAppTop" class="order-now-btn">Comandă Taxi Acum</a>
+<header>
+  <div class="nav-container">
+    <div class="logo" data-i18n="logo">Boomerang Taxi</div>
+    <div class="menu-toggle" id="mobile-menu" aria-label="open menu">☰</div>
+
+    <ul class="nav-links" id="nav-list" role="navigation" aria-label="main menu">
+      <li><a href="index.html" data-i18n="menu_home">Acasă</a></li>
+      <li><a href="comanda.html" data-i18n="menu_reserve">Rezervarea Auto 24/7</a></li>
+      <li><a href="arenda.html" data-i18n="menu_rent">Arendă Auto</a></li>
+      <li><a href="excursii.html" data-i18n="menu_trips">Excursii Moldova</a></li>
+      <li><a href="legalizare.html" data-i18n="menu_legal">Legalizare Auto în Taxi</a></li>
     </ul>
-  </nav>
+
+    <div class="nav-right" role="region" aria-label="utilities">
+      <select id="langSelect" class="lang-select" aria-label="language">
+        <option value="ro">RO</option>
+        <option value="ru">RU</option>
+        <option value="en">EN</option>
+        <option value="ua">UA</option>
+      </select>
+      <a href="#" id="openTaxiAppTop" class="order-now-btn" data-i18n="menu_order">Comandă Taxi Acum</a>
+    </div>
+  </div>
 </header>
 
-<main>
-<h2 style="text-align:center;">Mașini Standard</h2>
-<p style="text-align:center;">Alege una dintre mașinile standard disponibile:</p>
+<main class="container">
+  <section class="hero">
+    <h2 id="page_title" data-i18n="page_title">Mașini Standard</h2>
+    <p id="subtitle" data-i18n="subtitle">Alege una dintre mașinile standard disponibile:</p>
+  </section>
 
-<div class="car-cards">
-  <div class="car-card">
-    <img src="images/standard1.jpg" alt="Toyota Corolla">
-    <h3>Toyota Corolla</h3>
-    <p>Preț: 50 lei/zi</p>
-    <button class="rent-btn" data-car="Toyota Corolla" data-price="50">Închiriază</button>
+  <section class="car-cards" id="carCards">
+    <!-- card 1 -->
+    <div class="car-card" data-key="car1">
+      <img src="images/standard1.jpg" alt="Toyota Corolla">
+      <div class="card-body">
+        <h3 data-title>Toyota Corolla</h3>
+        <p data-desc>Economică și fiabilă, perfectă pentru oraș.</p>
+        <div class="card-meta"><span data-duration>—</span><strong data-price>50 lei/zi</strong></div>
+        <div class="card-actions">
+          <button class="btn btn--gold btn-details" data-key="car1" data-i18n="btn_details">Detalii</button>
+          <button class="btn btn--light rent-btn" data-car="Toyota Corolla" data-price="50" data-i18n="btn_rent">Închiriază</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- card 2 -->
+    <div class="car-card" data-key="car2">
+      <img src="images/standard2.jpg" alt="Honda Civic">
+      <div class="card-body">
+        <h3 data-title>Honda Civic</h3>
+        <p data-desc>Spațioasă și confortabilă, ideală pentru ture lungi.</p>
+        <div class="card-meta"><span data-duration>—</span><strong data-price>55 lei/zi</strong></div>
+        <div class="card-actions">
+          <button class="btn btn--gold btn-details" data-key="car2" data-i18n="btn_details">Detalii</button>
+          <button class="btn btn--light rent-btn" data-car="Honda Civic" data-price="55" data-i18n="btn_rent">Închiriază</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- card 3 -->
+    <div class="car-card" data-key="car3">
+      <img src="images/standard3.jpg" alt="Volkswagen Golf">
+      <div class="card-body">
+        <h3 data-title>Volkswagen Golf</h3>
+        <p data-desc>Compact și dinamic — foarte plăcut la condus.</p>
+        <div class="card-meta"><span data-duration>—</span><strong data-price>60 lei/zi</strong></div>
+        <div class="card-actions">
+          <button class="btn btn--gold btn-details" data-key="car3" data-i18n="btn_details">Detalii</button>
+          <button class="btn btn--light rent-btn" data-car="Volkswagen Golf" data-price="60" data-i18n="btn_rent">Închiriază</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- card 4 -->
+    <div class="car-card" data-key="car4">
+      <img src="images/standard4.jpg" alt="Skoda Octavia">
+      <div class="card-body">
+        <h3 data-title>Skoda Octavia</h3>
+        <p data-desc>Practică și robustă, bună pentru familie.</p>
+        <div class="card-meta"><span data-duration>—</span><strong data-price>58 lei/zi</strong></div>
+        <div class="card-actions">
+          <button class="btn btn--gold btn-details" data-key="car4" data-i18n="btn_details">Detalii</button>
+          <button class="btn btn--light rent-btn" data-car="Skoda Octavia" data-price="58" data-i18n="btn_rent">Închiriază</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rent form -->
+  <div id="rent-form-container" aria-live="polite">
+    <h3 id="form_title" data-i18n="form_title">Închiriază Mașina</h3>
+
+    <div class="form-group">
+      <label for="rent-name" id="label_name" data-i18n="label_name">Nume:</label>
+      <input id="rent-name" type="text" placeholder="Nume">
+    </div>
+
+    <div class="form-group">
+      <label for="rent-phone" id="label_phone" data-i18n="label_phone">Telefon:</label>
+      <input id="rent-phone" type="text" placeholder="Ex: 069123456">
+    </div>
+
+    <p id="selected-car" style="color:var(--gold);font-weight:700"></p>
+
+    <div class="form-group">
+      <label for="rent-days" id="label_days" data-i18n="label_days">Număr zile:</label>
+      <input id="rent-days" type="number" min="1" value="1">
+    </div>
+
+    <p id="total-price" style="color:var(--gold);font-weight:700">Preț total: 0 lei</p>
+
+    <div class="buttons-form">
+      <button class="btn btn--green" id="send-rent-whatsapp" data-i18n="btn_whatsapp">Trimite pe WhatsApp</button>
+      <button class="btn btn--blue" id="send-rent-telegram" data-i18n="btn_telegram">Trimite pe Telegram</button>
+    </div>
   </div>
-
-  <div class="car-card">
-    <img src="images/standard2.jpg" alt="Honda Civic">
-    <h3>Honda Civic</h3>
-    <p>Preț: 55 lei/zi</p>
-    <button class="rent-btn" data-car="Honda Civic" data-price="55">Închiriază</button>
-  </div>
-
-  <div class="car-card">
-    <img src="images/standard3.jpg" alt="Volkswagen Golf">
-    <h3>Volkswagen Golf</h3>
-    <p>Preț: 60 lei/zi</p>
-    <button class="rent-btn" data-car="Volkswagen Golf" data-price="60">Închiriază</button>
-  </div>
-
-  <div class="car-card">
-    <img src="images/standard4.jpg" alt="Skoda Octavia">
-    <h3>Skoda Octavia</h3>
-    <p>Preț: 58 lei/zi</p>
-    <button class="rent-btn" data-car="Skoda Octavia" data-price="58">Închiriază</button>
-  </div>
-</div>
-
-<!-- Formular de închiriere -->
-<div id="rent-form-container">
-  <h3>Închiriază Mașina</h3>
-  
-  <div class="form-group">
-    <label for="rent-name">Nume:</label>
-    <input type="text" id="rent-name" placeholder="Nume" required>
-  </div>
-
-  <div class="form-group">
-    <label for="rent-phone">Telefon:</label>
-    <input type="text" id="rent-phone" placeholder="Ex: 069123456" required>
-  </div>
-
-  <p id="selected-car"></p>
-
-  <div class="form-group">
-    <label for="rent-days">Număr zile:</label>
-    <input type="number" id="rent-days" min="1" value="1">
-  </div>
-
-  <p id="total-price">Preț total: 0 lei</p>
-
-  <div class="buttons-form">
-    <button id="send-rent-whatsapp">Trimite pe WhatsApp</button>
-    <button id="send-rent-telegram">Trimite pe Telegram</button>
-  </div>
-</div>
-
 </main>
 
+<!-- Modal details -->
+<div class="modal" id="modal">
+  <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-gallery">
+      <img id="modal-main-img" src="" alt="">
+      <div class="thumbs" id="modal-thumbs"></div>
+    </div>
+    <div class="modal-info">
+      <h3 id="modalTitle">Titlu</h3>
+      <p id="modalDesc">Descriere</p>
+      <p style="color:var(--gold);font-weight:700" id="modalPrice">Preț: —</p>
+      <button class="close-modal" id="closeModal">Închide</button>
+    </div>
+  </div>
+</div>
+
 <footer>
-<p>&copy; 2025 Boomerang Taxi | Toate drepturile rezervate</p>
+  <p>&copy; 2025 Boomerang Taxi | Toate drepturile rezervate</p>
 </footer>
 
 <script>
+/* TRANSLATIONS */
+const TRANSLATIONS = {
+  ro: {
+    logo:"Boomerang Taxi", menu_home:"Acasă", menu_reserve:"Rezervarea Auto 24/7", menu_rent:"Arendă Auto",
+    menu_trips:"Excursii Moldova", menu_legal:"Legalizare Auto în Taxi", menu_order:"Comandă Taxi Acum",
+    page_title:"Mașini Standard", subtitle:"Alege una dintre mașinile standard disponibile:",
+    form_title:"Închiriază Mașina", label_name:"Nume:", label_phone:"Telefon:", label_days:"Număr zile:",
+    btn_whatsapp:"Trimite pe WhatsApp", btn_telegram:"Trimite pe Telegram", btn_rent:"Închiriază", btn_details:"Detalii",
+    cars:{
+      car1:{title:"Toyota Corolla", desc:"Economică și fiabilă, perfectă pentru oraș.", price:"50 lei/zi", duration:"—"},
+      car2:{title:"Honda Civic", desc:"Spațioasă și confortabilă, ideală pentru ture lungi.", price:"55 lei/zi", duration:"—"},
+      car3:{title:"Volkswagen Golf", desc:"Compact și dinamic — foarte plăcut la condus.", price:"60 lei/zi", duration:"—"},
+      car4:{title:"Skoda Octavia", desc:"Practică și robustă, bună pentru familie.", price:"58 lei/zi", duration:"—"}
+    }
+  },
+  ru: {
+    logo:"Boomerang Такси", menu_home:"Главная", menu_reserve:"Заказ авто 24/7", menu_rent:"Аренда авто",
+    menu_trips:"Экскурсии Молдова", menu_legal:"Легализация авто в такси", menu_order:"Заказать Такси",
+    page_title:"Стандартные автомобили", subtitle:"Выберите один из доступных стандартных автомобилей:",
+    form_title:"Арендовать автомобиль", label_name:"Имя:", label_phone:"Телефон:", label_days:"Количество дней:",
+    btn_whatsapp:"Отправить в WhatsApp", btn_telegram:"Отправить в Telegram", btn_rent:"Арендовать", btn_details:"Детали",
+    cars:{
+      car1:{title:"Toyota Corolla", desc:"Экономичный и надежный, идеально для города.", price:"50 лей/день", duration:"—"},
+      car2:{title:"Honda Civic", desc:"Просторный и комфортный, подходит для дальних поездок.", price:"55 лей/день", duration:"—"},
+      car3:{title:"Volkswagen Golf", desc:"Компактный и динамичный — приятно управлять.", price:"60 лей/день", duration:"—"},
+      car4:{title:"Skoda Octavia", desc:"Практичный и надежный, отлично для семьи.", price:"58 лей/день", duration:"—"}
+    }
+  },
+  en: {
+    logo:"Boomerang Taxi", menu_home:"Home", menu_reserve:"Car Booking 24/7", menu_rent:"Car Rental",
+    menu_trips:"Moldova Trips", menu_legal:"Car Legalization in Taxi", menu_order:"Order Taxi Now",
+    page_title:"Standard Cars", subtitle:"Choose one of the available standard cars:",
+    form_title:"Rent the Car", label_name:"Name:", label_phone:"Phone:", label_days:"Number of days:",
+    btn_whatsapp:"Send via WhatsApp", btn_telegram:"Send via Telegram", btn_rent:"Rent", btn_details:"Details",
+    cars:{
+      car1:{title:"Toyota Corolla", desc:"Economical and reliable, great for city driving.", price:"50 MDL/day", duration:"—"},
+      car2:{title:"Honda Civic", desc:"Spacious and comfortable, ideal for long drives.", price:"55 MDL/day", duration:"—"},
+      car3:{title:"Volkswagen Golf", desc:"Compact and dynamic — fun to drive.", price:"60 MDL/day", duration:"—"},
+      car4:{title:"Skoda Octavia", desc:"Practical and sturdy, good for families.", price:"58 MDL/day", duration:"—"}
+    }
+  },
+  ua: {
+    logo:"Boomerang Таксі", menu_home:"Головна", menu_reserve:"Бронювання авто 24/7", menu_rent:"Оренда авто",
+    menu_trips:"Екскурсії Молдова", menu_legal:"Легалізація авто в таксі", menu_order:"Замовити Таксі",
+    page_title:"Стандартні авто", subtitle:"Оберіть один з доступних стандартних автомобілів:",
+    form_title:"Орендувати автомобіль", label_name:"Ім'я:", label_phone:"Телефон:", label_days:"Кількість днів:",
+    btn_whatsapp:"Надіслати у WhatsApp", btn_telegram:"Надіслати у Telegram", btn_rent:"Орендувати", btn_details:"Деталі",
+    cars:{
+      car1:{title:"Toyota Corolla", desc:"Економічна і надійна, чудова для міста.", price:"50 лей/день", duration:"—"},
+      car2:{title:"Honda Civic", desc:"Простора та комфортна, ідеальна для далеких поїздок.", price:"55 лей/день", duration:"—"},
+      car3:{title:"Volkswagen Golf", desc:"Компактний та динамічний — приємно керувати.", price:"60 лей/день", duration:"—"},
+      car4:{title:"Skoda Octavia", desc:"Практичний та надійний, підходить для сім'ї.", price:"58 лей/день", duration:"—"}
+    }
+  }
+};
+
+/* Apply translations */
+function applyTranslations(lang){
+  // menu & simple data-i18n keys
+  const t = TRANSLATIONS[lang] || TRANSLATIONS.ro;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key = el.getAttribute('data-i18n');
+    if(t[key] !== undefined) el.textContent = t[key];
+  });
+
+  // page title & subtitle & form labels
+  document.getElementById('page_title').textContent = t.page_title;
+  document.getElementById('subtitle').textContent = t.subtitle;
+  document.getElementById('form_title').textContent = t.form_title;
+  document.getElementById('label_name').textContent = t.label_name;
+  document.getElementById('label_phone').textContent = t.label_phone;
+  document.getElementById('label_days').textContent = t.label_days;
+
+  // menu items
+  const menuMap = ['menu_home','menu_reserve','menu_rent','menu_trips','menu_legal'];
+  document.querySelectorAll('#nav-list a').forEach((a,idx)=>{
+    if(menuMap[idx] && t[menuMap[idx]]) a.textContent = t[menuMap[idx]];
+  });
+
+  // CTA
+  document.querySelectorAll('[data-i18n="menu_order"]').forEach(e=> e.textContent = t.menu_order);
+
+  // cards
+  document.querySelectorAll('.car-card').forEach(card=>{
+    const key = card.getAttribute('data-key');
+    if(t.cars && t.cars[key]){
+      card.querySelector('[data-title]').textContent = t.cars[key].title;
+      card.querySelector('[data-desc]').textContent = t.cars[key].desc;
+      card.querySelector('[data-price]').textContent = t.cars[key].price;
+      card.querySelector('[data-duration]').textContent = t.cars[key].duration;
+      // update rent-btn dataset for messages
+      const rentBtn = card.querySelector('.rent-btn');
+      if(rentBtn) rentBtn.dataset.car = t.cars[key].title;
+    }
+  });
+
+  // buttons text
+  document.querySelectorAll('[data-i18n="btn_whatsapp"]').forEach(e=> e.textContent = t.btn_whatsapp);
+  document.querySelectorAll('[data-i18n="btn_telegram"]').forEach(e=> e.textContent = t.btn_telegram);
+  document.querySelectorAll('[data-i18n="btn_rent"]').forEach(e=> e.textContent = t.btn_rent);
+  document.querySelectorAll('.btn-details').forEach(e=> e.textContent = t.btn_details);
+}
+
+/* initial language */
+const langSelect = document.getElementById('langSelect');
+let currentLang = localStorage.getItem('siteLang') || 'ro';
+langSelect.value = currentLang;
+applyTranslations(currentLang);
+langSelect.addEventListener('change', (e)=>{
+  currentLang = e.target.value;
+  localStorage.setItem('siteLang', currentLang);
+  applyTranslations(currentLang);
+});
+
+/* mobile menu */
+document.getElementById('mobile-menu').addEventListener('click', ()=> {
+  document.getElementById('nav-list').classList.toggle('active');
+});
+
+/* rent form logic */
 const rentButtons = document.querySelectorAll('.rent-btn');
 const rentForm = document.getElementById('rent-form-container');
-const selectedCar = document.getElementById('selected-car');
-const totalPrice = document.getElementById('total-price');
+const selectedCarEl = document.getElementById('selected-car');
+const rentDaysInput = document.getElementById('rent-days');
+const totalPriceEl = document.getElementById('total-price');
 let currentCar = '';
 let currentPrice = 0;
 
 rentButtons.forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    currentCar = btn.dataset.car;
-    currentPrice = parseInt(btn.dataset.price);
-    selectedCar.textContent = `🚘 Mașina selectată: ${currentCar} (${currentPrice} lei/zi)`;
-    totalPrice.textContent = `Preț total: ${currentPrice} lei`;
+  btn.addEventListener('click', ()=>{
+    currentCar = btn.dataset.car || btn.getAttribute('data-car') || '';
+    currentPrice = parseFloat(btn.dataset.price || btn.getAttribute('data-price')) || 0;
+    selectedCarEl.textContent = `${currentCar} — ${currentPrice} lei/zi`;
+    rentDaysInput.value = 1;
+    totalPriceEl.textContent = `Preț total: ${currentPrice} lei`;
     rentForm.style.display = 'block';
+    setTimeout(()=> rentForm.scrollIntoView({behavior:'smooth', block:'center'}), 150);
   });
 });
 
-document.getElementById('rent-days').addEventListener('input',()=>{
-  const days = parseInt(document.getElementById('rent-days').value)||1;
-  totalPrice.textContent = `Preț total: ${days*currentPrice} lei`;
+rentDaysInput.addEventListener('input', ()=>{
+  const days = Math.max(1, parseInt(rentDaysInput.value) || 1);
+  totalPriceEl.textContent = `Preț total: ${days * currentPrice} lei`;
 });
 
-// Mesaj
-function buildRentMessage(){
-  const name=document.getElementById('rent-name').value;
-  const phone=document.getElementById('rent-phone').value;
-  const days=parseInt(document.getElementById('rent-days').value)||1;
-  if(!name||!phone){alert("Completați numele și telefonul!");return null;}
-  return `Bună, vreau să închiriez o mașină.%0A📝 Nume: ${name}%0A📞 Telefon: ${phone}%0A🚘 Mașina: ${currentCar}%0A📅 Zile: ${days}%0A💰 Preț total: ${days*currentPrice} lei`;
-}
-
-// WhatsApp
-document.getElementById('send-rent-whatsapp').addEventListener('click',()=>{
-  const msg=buildRentMessage();
-  if(!msg) return;
-  window.open('https://wa.me/37360248885?text='+msg);
-});
-
-// Telegram
-document.getElementById('send-rent-telegram').addEventListener('click',()=>{
-  const msg=buildRentMessage();
-  if(!msg) return;
-  window.open('https://t.me/daniieell_c?text='+msg);
-});
-
-    // Buton Comandă acum → App Store / Play Store
-    function openTaxiApp() {
-  const ua = navigator.userAgent || navigator.vendor || window.opera;
-  if (/android/i.test(ua)) {
-      window.location.href = "https://play.google.com/store/apps/details?id=com.boomerang.taxi";
-  } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
-      window.location.href = "https://apps.apple.com/app/id6737691364";
-  } else {
-      alert("Accesează magazinul de aplicații pentru a instala Boomerang Taxi.");
+/* build messages localized */
+function buildRentMessage(lang){
+  const name = document.getElementById('rent-name').value.trim();
+  const phone = document.getElementById('rent-phone').value.trim();
+  const days = Math.max(1, parseInt(rentDaysInput.value) || 1);
+  if(!name || !phone){
+    const alerts = { ro:"Completați numele și telefonul!", ru:"Заполните имя и телефон!", en:"Please fill name and phone!", ua:"Заповніть ім'я та телефон!" };
+    alert(alerts[lang] || alerts.ro);
+    return null;
   }
+  const templates = {
+    ro: `Bună, vreau să închiriez mașina ${currentCar} pentru ${days} zile.%0ANume: ${name}%0ATelefon: ${phone}%0APreț total: ${days * currentPrice} lei`,
+    ru: `Здравствуйте, хочу арендовать автомобиль ${currentCar} на ${days} дней.%0AИмя: ${name}%0AТелефон: ${phone}%0AИтоговая цена: ${days * currentPrice} лей`,
+    en: `Hello, I want to rent the car ${currentCar} for ${days} days.%0AName: ${name}%0APhone: ${phone}%0ATotal price: ${days * currentPrice} MDL`,
+    ua: `Вітаю, хочу орендувати автомобіль ${currentCar} на ${days} днів.%0AІм'я: ${name}%0AТелефон: ${phone}%0AВартість: ${days * currentPrice} лей`
+  };
+  return templates[lang] || templates.ro;
 }
 
-document.getElementById("openTaxiAppTop").addEventListener("click", openTaxiApp);
+document.getElementById('send-rent-whatsapp').addEventListener('click', ()=>{
+  const msg = buildRentMessage(currentLang);
+  if(!msg) return;
+  window.open('https://wa.me/37360248885?text=' + encodeURIComponent(msg));
+});
 
-  // Meniu mobil
-  const mobileMenu = document.getElementById('mobile-menu');
-    const navList = document.querySelector('.nav-list');
-    mobileMenu.addEventListener('click', () => navList.classList.toggle('active'));
-    
-  </script>
+document.getElementById('send-rent-telegram').addEventListener('click', ()=>{
+  const msg = buildRentMessage(currentLang);
+  if(!msg) return;
+  window.open('https://t.me/daniieell_c?text=' + encodeURIComponent(msg));
+});
+
+/* App CTA */
+document.getElementById('openTaxiAppTop').addEventListener('click', (e)=>{
+  e.preventDefault();
+  const ua = navigator.userAgent || navigator.vendor || window.opera;
+  if(/android/i.test(ua)) window.location.href="https://play.google.com/store/apps/details?id=com.boomerang.taxi";
+  else if(/iPad|iPhone|iPod/.test(ua) && !window.MSStream) window.location.href="https://apps.apple.com/app/id6737691364";
+  else alert({
+    ro:"Accesează magazinul de aplicații pentru a instala Boomerang Taxi.",
+    ru:"Откройте магазин приложений, чтобы установить Boomerang Такси.",
+    en:"Open the app store to install Boomerang Taxi.",
+    ua:"Відкрийте магазин додатків, щоб встановити Boomerang Таксі."
+  }[currentLang] || "Open app store");
+});
+
+/* DETAILS MODAL */
+const modal = document.getElementById('modal');
+const modalMainImg = document.getElementById('modal-main-img');
+const modalTitle = document.getElementById('modalTitle');
+const modalDesc = document.getElementById('modalDesc');
+const modalPrice = document.getElementById('modalPrice');
+const modalThumbs = document.getElementById('modal-thumbs');
+const closeModalBtn = document.getElementById('closeModal');
+
+/* sample galleries (replace with real image paths) */
+const CAR_GALLERIES = {
+  car1: ["images/standard1.jpg","images/standard1-2.jpg","images/standard1-3.jpg"],
+  car2: ["images/standard2.jpg","images/standard2-2.jpg","images/standard2-3.jpg"],
+  car3: ["images/standard3.jpg","images/standard3-2.jpg","images/standard3-3.jpg"],
+  car4: ["images/standard4.jpg","images/standard4-2.jpg","images/standard4-3.jpg"]
+};
+
+document.querySelectorAll('.btn-details').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const key = btn.dataset.key;
+    const t = TRANSLATIONS[currentLang] || TRANSLATIONS.ro;
+    const carData = (t.cars && t.cars[key]) ? t.cars[key] : TRANSLATIONS.ro.cars[key];
+    modalTitle.textContent = carData.title;
+    modalDesc.textContent = carData.desc;
+    modalPrice.textContent = carData.price;
+    const imgs = CAR_GALLERIES[key] || ['images/placeholder.jpg'];
+    modalThumbs.innerHTML = '';
+    modalMainImg.src = imgs[0];
+    modalMainImg.alt = carData.title;
+    imgs.forEach(src=>{
+      const im = document.createElement('img');
+      im.src = src;
+      im.alt = carData.title;
+      im.addEventListener('click', ()=> modalMainImg.src = src);
+      modalThumbs.appendChild(im);
+    });
+    modal.classList.add('show');
+  });
+});
+
+closeModalBtn.addEventListener('click', ()=> modal.classList.remove('show'));
+modal.addEventListener('click', (e)=> { if(e.target === modal) modal.classList.remove('show'); });
+
+</script>
 </body>
 </html>
